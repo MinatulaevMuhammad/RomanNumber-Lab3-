@@ -14,8 +14,8 @@ namespace RN
         {
             try
             {
-                if (n < 0 || n > 999)
-                    throw new ArgumentException("Value must be in the range 0 - 999.");
+                if (n < 0 || n > 1000)
+                    throw new ArgumentException("Value must be in the range 0 - 1000.");
                 RomanNumberException cvb = new RomanNumberException();
                 if (n == 0 || n < 0) cvb.Vod(n);
 
@@ -41,7 +41,8 @@ namespace RN
 
             catch
             {
-                throw new NotImplementedException("The method or operation is not implemented.");
+               if(n>1000) throw new NotImplementedException("Ошибка: Недопустимое значение, число должно быть меньше 1000");
+               else throw new NotImplementedException("Ошибка: Недопустимое значение, число должно быть больше 0.");
             }
 
         }
@@ -49,6 +50,7 @@ namespace RN
 
         public static RomanNumber operator +(RomanNumber? n1, RomanNumber? n2)
         {
+            int sum3 = 0;
             RomanNumber number1;
             try
             {
@@ -87,7 +89,7 @@ namespace RN
                 {
                     sum2 += rimDg2[arr2[i]];
                 }
-                int sum3 = 0;
+                
                 sum3 = sum1 + sum2;
 
                 Console.WriteLine(sum3);
@@ -95,7 +97,8 @@ namespace RN
             }
             catch
             {
-                throw new NotImplementedException("The method or operation is not implemented.");
+                if (sum3 > 1000) throw new NotImplementedException("Ошибка: Недопустимое значение, число должно быть меньше 1000");
+                else throw new NotImplementedException("Ошибка: Недопустимое значение, число должно быть больше 0.");
             }
             return new RomanNumber (number1.value) { value = number1.value };
         }
@@ -103,6 +106,7 @@ namespace RN
 
         public static RomanNumber operator -(RomanNumber? n1, RomanNumber? n2)
         {
+            int min3 = 0;
             RomanNumber number2 = null;
             try
             {
@@ -141,7 +145,7 @@ namespace RN
                 {
                     min2 += rimDg2[arr2[i]];
                 }
-                int min3 = 0;
+                
                 min3 = min1 - min2;
 
                 if (min3 > 0)
@@ -157,7 +161,8 @@ namespace RN
             }
             catch
             {
-                throw new NotImplementedException("The method or operation is not implemented.");
+                if (min3 > 1000) throw new NotImplementedException("Ошибка: Недопустимое значение, число должно быть меньше 1000");
+                else throw new NotImplementedException("Ошибка: Недопустимое значение, число должно быть больше 0.");
             }
 
             return new RomanNumber(number2.value) { value = number2.value };
@@ -166,6 +171,7 @@ namespace RN
 
         public static RomanNumber operator *(RomanNumber? n1, RomanNumber? n2)
         {
+            int mul3 = 0;
             RomanNumber number3=null;
             try
             {
@@ -204,10 +210,10 @@ namespace RN
                 {
                     mul2 += rimDg2[arr2[i]];
                 }
-                int mul3 = 0;
+                
                 mul3 = mul1 * mul2;
 
-                if (mul3 < 999)
+                if (mul3 < 1000)
                 {
                     Console.WriteLine(mul3);
                     number3 = new RomanNumber(mul3) { value = mul3 };
@@ -222,7 +228,8 @@ namespace RN
             }
             catch
             {
-                throw new NotImplementedException("The method or operation is not implemented.");
+                if (mul3 > 1000) throw new NotImplementedException("Ошибка: Недопустимое значение, число должно быть меньше 1000");
+                else throw new NotImplementedException("Ошибка: Недопустимое значение, число должно быть больше 0.");
             }
 
             return new RomanNumber(number3.value) { value = number3.value };
@@ -230,6 +237,7 @@ namespace RN
 
         public static RomanNumber operator /(RomanNumber? n1, RomanNumber? n2)
         {
+            int div3 = 0;
             RomanNumber number4;
             try
             {
@@ -268,7 +276,7 @@ namespace RN
                 {
                     div2 += rimDg2[arr2[i]];
                 }
-                int div3 = 0;
+                
                 div3 = div1 / div2;
 
                 Console.WriteLine(div3);
@@ -276,7 +284,8 @@ namespace RN
             }
             catch
             {
-                throw new NotImplementedException("The method or operation is not implemented.");
+                if (div3 > 1000) throw new NotImplementedException("Ошибка: Недопустимое значение, число должно быть меньше 1000");
+                else throw new NotImplementedException("Ошибка: Недопустимое значение, число должно быть больше 0.");
             }
 
             return new RomanNumber(number4.value) { value = number4.value };
